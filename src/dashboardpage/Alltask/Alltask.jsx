@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useDrag, useDrop } from "react-dnd";
 import { FaTimes } from "react-icons/fa";
 import { useLoaderData } from "react-router-dom";
 
@@ -39,6 +40,15 @@ const Section = ({status ,allTask,
     todos,
     inProgress,
     closed}) =>{
+
+        const [{ isOver }, drop] = useDrop(() => ({
+            accept: "task",
+            drop: (item) => addItemToSection(item.id),
+            collect: (monitor) => ({
+              isOver: !!monitor.isOver()
+            })
+          }))
+
         let text = "Todo";
         let bg = "bg-slate-500";
         let tasksToMap = todos
@@ -55,7 +65,11 @@ const Section = ({status ,allTask,
             tasksToMap = closed
         }
 
-    return ( <div className={`w-64`}>
+       const addItemToSection = (id) =>{
+        console.log("dropped", id , status)
+       } 
+
+    return ( <div ref={drop} className={`w-64`}>
     <Header text={text} bg={bg} count={tasksToMap.length}/> 
     {tasksToMap.length > 0 && tasksToMap.map(task => <Task key={task._id} allTask={allTask} task={task} setTasks={setTasks}/>)}
     </div>
@@ -72,8 +86,20 @@ const Header = ({ text, bg, count}) =>{
 };
 
 const Task = ({ task, allTask, setTasks }) =>{
+
+    const [{ isDragging }, drag] = useDrag(() => ({
+        type: "task",
+        item: {id: task._id},
+        collect: (monitor) => ({
+          isDragging: !!monitor.isDragging()
+        })
+      }))
+
+      console.log(isDragging)
+
+
     return ( 
-        <div className={`relative p-4 mt-8 shadow-md rounded-md cursor-grab`}>
+        <div ref={drag} className={`relative p-4 mt-8 shadow-md rounded-md cursor-grab ${isDragging ? "opacity-25" : "opacity-100"} `}>
             <p>{task.post_title}</p>
             <button className="absolute bottom-1 right-1 text-white" ><FaTimes /></button>
         </div>
