@@ -43,8 +43,9 @@ import PrivateRoute from "../provider/PrivateRoute";
         {
           path: 'alltask',
           element: <Alltask></Alltask>,
-          loader: () => fetch('http://localhost:5001/alltask')
+          loader: () => fetch('https://task-management-server-ten-virid.vercel.app/alltask')
         },
+        
         {
           path: 'yourtask',
           element: <Yourtask></Yourtask>

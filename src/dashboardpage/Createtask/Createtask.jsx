@@ -32,7 +32,7 @@ const Createtask = () => {
         console.log(newCreator)
         //send data to the server
 
-        fetch('http://localhost:5001/alltask',{
+        fetch('https://task-management-server-ten-virid.vercel.app/alltask',{
             method:'POST',
             headers:{
                 'content-type':'application/json'
