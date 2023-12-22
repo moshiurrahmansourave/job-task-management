@@ -1,6 +1,7 @@
 import { FaCalendar, FaCalendarAlt, FaCreditCard, FaGlobe, FaHandshake, FaPencilAlt, FaUsers } from "react-icons/fa";
 import Banner from "../Banner/Banner";
 import './Home.css'
+import Footer from "../Footer/Footer";
 
 
 const Home = () => {
@@ -68,6 +69,7 @@ const Home = () => {
                    
             </div>
             </div>
+            <Footer></Footer>
         </div>
     );
 };
