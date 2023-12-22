@@ -19,6 +19,7 @@ const Createtask = () => {
         const type = form.quality.value;
         const deadline = form.Date.value;
         const email = form.email.value;
+        const status = form.status.value;
        
 
         const newCreator = {
@@ -26,6 +27,7 @@ const Createtask = () => {
             description, 
             type,
             deadline,
+            status,
             email}
         console.log(newCreator)
         //send data to the server
@@ -74,6 +76,12 @@ const Createtask = () => {
             <p className="text-xl font-bold underline"> Your email</p>
               <input value={user.email} name="email" type="text" placeholder="Type here" className="input rounded-none input-bordered input-md w-full max-w-xs" required/>
            </div>
+
+           <div className="flex items-center gap-1">
+            <h2 className="font-bold">Task Status:</h2>
+            <input type="text" name="status" value={"todo"} />
+           </div>
+
            <select name="quality" className="select rounded-none select-bordered w-full max-w-xs">
   <option disabled selected>select quality</option>
   <option>Low</option>
