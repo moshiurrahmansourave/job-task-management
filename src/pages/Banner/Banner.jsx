@@ -1,12 +1,36 @@
 import '../Banner/Banner.css'
 import Typed from 'typed.js';
 
-import { FaFacebookF, FaInstagram, FaTiktok, FaTwitter } from "react-icons/fa";
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
+import animationData from '../../../public/animation/n7BOneHh2T.json';
+import Lottie from 'lottie-web';
 
 const Banner = () => {
-
+    const animationContainer = useRef(null);
+    const anim = useRef(null);
     const el = React.useRef(null);
+
+    useEffect(() => {
+        if (animationContainer.current) {
+          if (anim.current) {
+            anim.current.destroy();
+            anim.current = null;
+          }
+          anim.current = Lottie.loadAnimation({
+            container: animationContainer.current,
+            renderer: 'svg',
+            loop: true,
+            autoplay: true,
+            animationData: animationData,
+          });
+        }
+        return () => {
+          if (anim.current) {
+            anim.current.destroy();
+            anim.current = null;
+          }
+        };
+      }, []);
 
     React.useEffect(() => {
         const typed = new Typed(el.current, {
@@ -39,9 +63,9 @@ const Banner = () => {
                    
 
                 </div>
-                <div className='lg:w-[400px]'> 
-            <img src="https://aptitude8.com/hubfs/flywheel%20v2.png" alt="" />
-           </div>
+                <div className='lg:w-[500px]'>
+          <div ref={animationContainer} />
+        </div>
                 
            </section>
            

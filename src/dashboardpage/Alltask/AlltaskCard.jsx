@@ -67,10 +67,16 @@ const Section = ({status ,allTask,
 
        const addItemToSection = (id) =>{
          setAllTask(prev =>{
-            console.log("prev", prev, id)
-            return prev
-         })
-       } 
+            const mTasks = prev.map(t => {
+                if(t.id === id){
+                    return {...t, status: status }
+                }
+                return t
+            })
+            
+            return mTasks;
+         });
+       } ;
 
     return ( <div ref={drop} className={`w-64 rounded-md p-2 ${isOver ? "bg-slate-200" : ""}`}>
     <Header text={text} bg={bg} count={tasksToMap.length}/> 

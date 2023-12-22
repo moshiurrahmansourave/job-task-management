@@ -58,7 +58,7 @@ const Navbar = () => {
             </p>
           </a>
         </li>
-        <li className="hover:bg-sky-500"><Link to="/dashboard/contact">Dashboard</Link></li>
+        <li className="hover:bg-sky-500"><Link to="/dashboard">Dashboard</Link></li>
         <li><a onClick={handleLogOut} className="  hover:bg-sky-500">Sing Out</a></li>
       </ul>
     </div>

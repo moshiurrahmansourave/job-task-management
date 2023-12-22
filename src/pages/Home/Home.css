@@ -1,7 +1,10 @@
 .home-body {
     min-height: 100vh;
-    background: url('../../assets/colorful-abstract-textured-background-design.jpg');
+    background: linear-gradient(to right, #655e7a, #494528);
     background-size: cover;
     background-position: center;
 
+}
+.bgbg{
+    background: linear-gradient(to right, #666469, #7c865f)
 }
