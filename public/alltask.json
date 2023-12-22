@@ -1,0 +1,15 @@
+[
+    {
+      "post_title": "Exploring the javascript",
+      "description": "A journey through the cosmos, unraveling mysteries of space.",
+      "deadline": "12-23-2023",
+      "type": "low"
+      
+    },
+    {
+        "post_title": "Exploring the javascript",
+        "description": "A journey through the cosmos, unraveling mysteries of space.",
+        "deadline": "12-23-2023",
+        "type": "moderate"
+    }
+]
